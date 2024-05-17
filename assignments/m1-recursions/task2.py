@@ -42,6 +42,8 @@ def fib_n(n):
 
 
 def test():
+    """Execute test cases for task."""
+
     test_cases = {
         0: 0,
         1: 1,
@@ -55,8 +57,8 @@ def test():
     print(f"\n{__file__[-8:-3]}\n-----------------------------\n")
 
     [
-        print(f"Fibonacci number {k}:\t{fib_n(k)}\n\
-        {len(str(k))*" "}should be:\t{v}\n")
+        print(f"Fibonacci number {k}:\t{fib_n(k)}\n\t{
+            len(str(k))*" "}should be:\t{v}\n")
         for k, v in test_cases.items()
     ]
 

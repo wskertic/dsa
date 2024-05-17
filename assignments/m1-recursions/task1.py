@@ -30,12 +30,14 @@ def factorial(n):
 
 
 def test():
+    """Execute test cases for task."""
     test_cases = {1: 1, 2: 2, 3: 6, 5: 120, 10: 3628800, 15: 1307674368000}
 
     print(f"\n{__file__[-8:-3]}\n-----------------------------\n")
 
     [
-        print(f"Factorial {k}:\t{factorial(k)}\n {len(str(k))*" "}should be:\t{v}\n")
+        print(f"Factorial {k}:\t{factorial(k)}\n {
+            len(str(k))*" "}should be:\t{v}\n")
         for k, v in test_cases.items()
     ]
 
