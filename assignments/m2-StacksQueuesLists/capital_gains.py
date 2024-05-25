@@ -86,6 +86,7 @@ def calculate_capital_gain(transactions: str) -> Union[int, float]:
     Output:\n
     The total capital gain is $460\n
     """
+
     buy_queue = deque()
     sold_queue = deque()
     prepped = [
@@ -105,6 +106,7 @@ def calculate_capital_gain(transactions: str) -> Union[int, float]:
 
 def gains_are(transactions: str) -> str:
     """Pretty print capital gain."""
+
     capital_gain = calculate_capital_gain(transactions)
     print(
         f"The total capital gain is {
