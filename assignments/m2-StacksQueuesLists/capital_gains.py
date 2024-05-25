@@ -49,13 +49,14 @@ Sample runs:
     The total capital gain is $460
 """
 
-from collections import deque
 from ast import (
     literal_eval,
 )  # https://stackoverflow.com/questions/74665788/how-to-convert-string-to-number-in-python
+from collections import deque
+from typing import Union
 
 
-def calculate_capital_gain(transactions: str) -> str:
+def calculate_capital_gain(transactions: str) -> Union[int, float]:
     """Calculate capital gain for a daily series of transactions.
 
     Implementation should include a stack, a queue, or both.
@@ -99,38 +100,58 @@ def calculate_capital_gain(transactions: str) -> str:
         )
         for action, shares, price in logged
     ]
-    capital_gain = round(sum(sold_queue), 4)
+    return round(sum(sold_queue), 4)
+
+
+def gains_are(transactions: str) -> str:
+    """Pretty print capital gain."""
+    capital_gain = calculate_capital_gain(transactions)
     print(
         f"The total capital gain is {
             f"-${abs(capital_gain)}" if capital_gain < 0 else f"${capital_gain}"
-            }\n"
+            }"
     )
 
 
-ins = [
-    """buy 5 shares at 10.76 each
+def test():
+    """Execute test cases for task."""
+
+    ins = {
+        """buy 5 shares at 10.76 each
 buy 3 shares at 15.1 each
 buy 10 shares at 20.2 each
-sell 7 shares at 18.99 each""",
-    """buy 40 shares at 5 each # +120
+sell 7 shares at 18.99 each""": "$48.93",
+        """buy 40 shares at 5 each # +120
 buy 50 shares at 6 each # +60 +160
 sell 70 shares at 8 each
 buy 10 shares at 10 each # +40
-sell 30 shares at 14 each""",
-    """buy 10 shares at 100 each
-sell 10 shares at 0 each""",
-    """buy 100 shares at 10 each
-sell 100 shares at 10 each""",
-    """buy 50 shares at 2 each
-sell 50 shares at 22 each""",
-    """buy 100 shares at 20 each
+sell 30 shares at 14 each""": "$380",
+        """buy 10 shares at 100 each
+sell 10 shares at 0 each""": "-$1000",
+        """buy 100 shares at 10 each
+sell 100 shares at 10 each""": "$0",
+        """buy 50 shares at 2 each
+sell 50 shares at 22 each""": "$1000",
+        """buy 100 shares at 20 each
 buy 20 shares at 24 each
 buy 200 shares at 36 each
-sell 150 shares at 30 each""",
-    """buy 50 shares at 10 each
+sell 150 shares at 30 each""": "$940",
+        """buy 50 shares at 10 each
 buy 30 shares at 15 each
 buy 100 shares at 20 each
-sell 70 shares at 18 each""",
-]
+sell 70 shares at 18 each""": "$460",
+    }
 
-[(print(window),calculate_capital_gain(window)) for window in ins]
+    [
+        (
+            print("\nIf you:"),
+            print(window),
+            gains_are(window),
+            print(f"The correct answer is:\t  {answer}"),
+        )
+        for window, answer in ins.items()
+    ]
+
+
+if __name__ == "__main__":
+    test()
