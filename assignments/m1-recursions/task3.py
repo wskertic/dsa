@@ -21,6 +21,7 @@ def reverse_recurse(input: str) -> str:
 
 def test():
     """Execute test cases for task."""
+
     test_cases = {
         ".+": "+.",
         "Hello World": "dlroW olleH",
