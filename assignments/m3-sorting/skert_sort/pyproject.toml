@@ -1,0 +1,27 @@
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
+
+[project]
+name = "pysort_skertic"
+version = "0.0.1"
+description = "Python implementations of some sorting algorithms."
+authors = [{ name = "William Skertic", email = "wskertic@gmail.com" }]
+license = { text = "AGPLv3" }
+readme = "README.md"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: AGPLv3",
+    "Operating System :: OS Independent",
+]
+requires-python = ">=3.12"
+dependencies = ["pytest>=2.8.0,<=2.8.1"]
+
+[project.urls]
+"Homepage" = "https://github.com/wskertic/dsa"
+
+[tool.pdm.build.wheel-data]
+data = [{path = "test/data/*", relative-to = "."}]
+
+[tool.pytest.ini_options]
+addopts = ["--import-mode=importlib"]
