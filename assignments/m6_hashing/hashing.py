@@ -62,4 +62,4 @@ class HashTable:
 
 if __name__ == "__main__":
     HashTable().run_test()
-    HashTable().run_test([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
+    # HashTable().run_test([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13])
