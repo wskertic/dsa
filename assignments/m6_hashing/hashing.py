@@ -51,7 +51,7 @@ class HashTable:
             if self.table[try_index] == -1:  # if no collision, key will insert
                 self.table[try_index] = key  # insert key in free index
                 print(
-                    f"No collision -- succesfully inserted key {key}",
+                    f"No collision -- successfully inserted key {key}",
                     f"at hash table index {try_index}",
                 )
                 self.print_table()
