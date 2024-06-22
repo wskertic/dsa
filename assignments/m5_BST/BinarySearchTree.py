@@ -259,7 +259,7 @@ class BinarySearchTree:
                     return True
 
         def search(self, data):
-            """ """
+            """Determine whether value 'data' exists within tree."""
 
             if data == self.value:
                 return True
